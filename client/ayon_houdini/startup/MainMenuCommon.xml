@@ -60,6 +60,10 @@ host_tools.show_loader(parent=parent, use_context=True)
                 <label>Publish...</label>
                 <scriptCode><![CDATA[
 import hou
+import importlib
+from pharos_houdini.ayon import hooks
+importlib.reload(hooks)
+hooks.pre_ayon_publish_hook()
 from ayon_core.tools.utils import host_tools
 parent = hou.qt.mainWindow()
 host_tools.show_publisher(parent, tab="publish")
